@@ -1,0 +1,16 @@
+version: "3.2"
+services:
+  privategpt:
+    build: ./
+    container_name: privategpt
+    volumes:
+      - '.:/app'
+    deploy:
+      resources:
+        limits:
+          memory: 16G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
